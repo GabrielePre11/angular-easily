@@ -1,0 +1,19 @@
+.logo {
+  display: flex;
+  align-items: center;
+  column-gap: 0.8rem;
+  cursor: pointer;
+}
+
+.logo .title {
+  font-size: 2.1rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.logo_img {
+  width: 4rem;
+  height: 4rem;
+  object-fit: contain;
+  aspect-ratio: 1/1;
+}

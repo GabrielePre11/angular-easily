@@ -1,0 +1,68 @@
+<nav class="mobile-menu" [class.active]="isOpen()">
+  <div class="mobile_menu-container">
+    <!--========== Mobile Menu Header ========== -->
+    <div class="menu-header">
+      <app-logo />
+
+      <button
+        aria-label="Close Mobile Menu"
+        [attr.aria-expanded]="isOpen() ? 'true' : 'false'"
+        (click)="closeMobileMenu()"
+      >
+        <lucide-angular [img]="XIcon" size="27" class="close-menu" />
+      </button>
+    </div>
+
+    <!--========== Navigation ========== -->
+    <ul class="nav-list">
+      @for (link of mobileMenuLinks; track link.name) {
+      <li
+        [routerLink]="link.url"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: true}"
+        class="nav-link"
+      >
+        <a
+          [routerLink]="link.url"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: true}"
+          >{{ link.name }}</a
+        >
+      </li>
+      }
+    </ul>
+
+    <!--========== Mobile Menu Footer ========== -->
+    <div class="menu-footer">
+      <div class="menu_footer-actions">
+        <button class="sign_in-btn">Sign In</button>
+
+        <ul class="menu_footer-icons">
+          @for (social of mobileMenuFooterIcons; track social.name) {
+          <li>
+            <a href="/">
+              <lucide-angular
+                [img]="social.icon"
+                [attr.aria-label]="social.name + 's Icon'"
+                size="23px"
+                class="menu_footer-icon"
+              />
+            </a>
+          </li>
+          }
+        </ul>
+      </div>
+
+      <a href="/" class="sign-up-text"
+        >Don't have an account? <span>Sign Up</span></a
+      >
+    </div>
+
+    <!--========== Mobile Menu Logo ========== -->
+    <img
+      src="/easily-section-logo.png"
+      alt="Easily Logo"
+      class="easily_menu-logo"
+    />
+  </div>
+</nav>

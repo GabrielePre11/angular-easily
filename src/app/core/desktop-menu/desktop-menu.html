@@ -1,0 +1,14 @@
+<nav class="desktop-menu">
+  <ul class="desktop-nav">
+    @for (link of desktopMenuLinks; track link.name) {
+    <li class="desktop-link">
+      <a
+        [routerLink]="link.url"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: true}"
+        >{{ link.name }}</a
+      >
+    </li>
+    }
+  </ul>
+</nav>

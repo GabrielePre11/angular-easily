@@ -1,0 +1,50 @@
+.desktop-menu {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.desktop-nav {
+  display: flex;
+  align-items: center;
+  column-gap: 1.6rem;
+}
+
+.desktop-link {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  transition: all 0.2s ease-in-out;
+}
+
+/* @md */
+@media (min-width: 768px) {
+  .desktop-menu {
+    display: flex;
+    visibility: visible;
+    opacity: 1;
+  }
+  .desktop-nav {
+    column-gap: 2.4rem;
+  }
+  .desktop-link {
+    font-size: 1.7rem;
+  }
+}
+
+/* @lg */
+@media (min-width: 1024px) {
+  .desktop-nav {
+    column-gap: 2.6rem;
+  }
+  .desktop-link {
+    font-size: 1.7rem;
+  }
+}
+
+/* @xl */
+@media (min-width: 1280px) {
+  .desktop-nav {
+    column-gap: 3.2rem;
+  }
+}

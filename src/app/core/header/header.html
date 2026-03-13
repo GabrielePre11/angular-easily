@@ -1,0 +1,28 @@
+<header class="header">
+  <div class="container header-container">
+    <!--========== Header Logo ========== -->
+    <app-logo />
+
+    <!--========== Desktop & Tablet Navigation ========== -->
+    <app-desktop-menu role="navigation" aria-orientation="horizontal" />
+
+    <!--========== Actions ========== -->
+    <div class="header-actions">
+      <!--========== Sign In Button ========== -->
+      <button class="sign_in-btn">Sign In</button>
+
+      <!--========== Mobile Menu Toggle ========== -->
+      <button aria-label="Open Mobile Menu" (click)="toggleMobileMenu()">
+        <lucide-angular [img]="MenuIcon" size="27" class="mobile_menu-btn" />
+      </button>
+    </div>
+  </div>
+
+  <!--========== Mobile Menu Component ========== -->
+  <app-mobile-menu
+    role="menu"
+    [attr.aria-expanded]="isMobileMenuOpen() ? 'true' : 'false'"
+    [isOpen]="isMobileMenuOpen()"
+    (close)="isMobileMenuOpen.set(false)"
+  />
+</header>
