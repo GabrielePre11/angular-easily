@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HeroSection } from './components/hero-section/hero-section';
-import { HowItWorks } from './how-it-works/how-it-works';
+import { HowItWorks } from './components/how-it-works/how-it-works';
 
 @Component({
   selector: 'app-home',

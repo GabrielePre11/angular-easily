@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { EASY_STEPS } from '../../../models/constants/easySteps';
 import { LucideAngularModule } from 'lucide-angular';
+import { EASY_STEPS } from '../../../../models/constants/easySteps';
 
 @Component({
   selector: 'app-how-it-works',
