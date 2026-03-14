@@ -7,7 +7,7 @@
 .hero .container {
   display: grid;
   align-items: center;
-  row-gap: 2.5rem;
+  row-gap: 1.5rem;
 }
 
 .hero-content {
@@ -200,10 +200,15 @@
   }
 }
 
+.hero-logo {
+  display: none;
+}
+
 /* @sm */
 @media (width >= 640px) {
   .hero .container {
-    row-gap: 1rem;
+    padding-block-start: 2rem;
+    row-gap: 1.5rem;
   }
 
   .hero-title {
@@ -221,7 +226,8 @@
 /* @md */
 @media (width >= 768px) {
   .hero .container {
-    min-height: 90vh;
+    padding-block-start: 8rem;
+    row-gap: 5rem;
   }
 
   .hero-content {
@@ -261,6 +267,8 @@
   .hero-form {
     column-gap: 3rem;
     flex-direction: row;
+    justify-self: center;
+    max-width: 1100px;
   }
 
   .input-wrapper input {
@@ -277,6 +285,21 @@
   .submit-btn {
     max-width: max-content;
     border-radius: 80px;
+  }
+
+  .hero-logo {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: -25%;
+    width: 500px;
+    transform: translateY(-50%);
+    z-index: -1;
+    mask-image: radial-gradient(
+      circle,
+      var(--color-black) 70%,
+      transparent 80%
+    );
   }
 }
 
@@ -309,7 +332,6 @@
 
   .hero-form {
     padding-inline: 3rem;
-    justify-self: center;
   }
 
   .form-group {
@@ -326,5 +348,22 @@
 
   .form-input-groups {
     column-gap: 3.5rem;
+  }
+
+  .hero-logo {
+    width: 600px;
+    right: -20%;
+  }
+}
+
+/* @xl */
+@media (width >= 1280px) {
+  .hero .container {
+    row-gap: 7rem;
+  }
+
+  .hero-logo {
+    width: 750px;
+    right: -15%;
   }
 }

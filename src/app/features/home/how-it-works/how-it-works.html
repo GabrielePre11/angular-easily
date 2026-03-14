@@ -1,0 +1,23 @@
+<section class="how-it-works" aria-label="How It Works Section">
+  <div class="container">
+    <div class="section-heading">
+      <h3 class="section-subtitle">How It Works</h3>
+      <h2 class="section-title">Rent with these 3 easy steps</h2>
+    </div>
+
+    <ul class="easy-steps">
+      @for (step of easySteps; track step.title) {
+      <li>
+        <article class="easy-step">
+          <lucide-angular [img]="step.icon" size="40" class="step-icon" />
+
+          <div class="step-data">
+            <h3 class="step-title">{{ step.title }}</h3>
+            <p class="step-desc">{{ step.desc }}</p>
+          </div>
+        </article>
+      </li>
+      }
+    </ul>
+  </div>
+</section>

@@ -25,7 +25,7 @@
     </div>
 
     <!--========== Booking Form ========== -->
-    <form class="hero-form">
+    <form class="hero-form" (submit)="submit($event)">
       <div class="form-input-groups">
         <!--========== Location ========== -->
         <div class="form-group">
@@ -39,6 +39,8 @@
               name="location"
               id="location"
               placeholder="Search your location"
+              required
+              [formControl]="location"
             />
           </div>
         </div>
@@ -54,6 +56,9 @@
               inputmode="numeric"
               name="pick-up"
               id="pick-up"
+              [min]="pickUpValue()"
+              required
+              [formControl]="pickUpDate"
             />
           </div>
         </div>
@@ -69,6 +74,9 @@
               inputmode="numeric"
               name="return-date"
               id="return-date"
+              [min]="pickUpValue()"
+              required
+              [formControl]="returnDate"
             />
           </div>
         </div>
@@ -80,5 +88,5 @@
   </div>
 
   <!--========== Hero Logo ========== -->
-  <!-- <img src="/easily-section-logo.png" alt="Hero Logo" class="hero-logo" /> -->
+  <img src="/easily-section-logo.png" alt="Hero Logo" class="hero-logo" />
 </section>
