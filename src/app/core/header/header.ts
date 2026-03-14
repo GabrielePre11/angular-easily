@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, signal } from '@angular/core';
+import { Component, computed, effect, signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Logo } from '../../shared/logo/logo';
 import { MobileMenu } from '../mobile-menu/mobile-menu';
@@ -20,9 +20,30 @@ import { DesktopMenu } from '../desktop-menu/desktop-menu';
   styleUrl: './header.css',
 })
 export class Header {
-  isMobileMenuOpen = signal<boolean>(false);
-
   readonly MenuIcon = Menu;
+
+  isMobileMenuOpen = signal<boolean>(false);
+  windowScrollY = signal<number>(0);
+  isHeaderScrolled = computed(() => this.windowScrollY() > 0);
+
+  constructor() {
+    effect((onCleanup) => {
+      const headerScroll = () => {
+        this.windowScrollY.set(window.scrollY);
+      };
+
+      window.addEventListener('scroll', headerScroll);
+
+      /**
+       * @ onCleanup is a function that will be called when the component is destroyed
+       * @ or when the component is removed from the DOM. It automatically cleanes up the event listener.
+       */
+
+      onCleanup(() => {
+        window.removeEventListener('scroll', headerScroll);
+      });
+    });
+  }
 
   toggleMobileMenu() {
     this.isMobileMenuOpen.update((prev) => !prev);

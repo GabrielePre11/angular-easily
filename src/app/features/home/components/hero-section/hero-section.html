@@ -1,0 +1,84 @@
+<section class="hero" aria-label="Hero Section">
+  <div class="container">
+    <div class="hero-content">
+      <!--========== Data ========== -->
+      <div class="hero-data">
+        <!--========== Title ========== -->
+        <h1 class="hero-title">
+          Find, book, and rent a car <span>Easily</span>
+        </h1>
+
+        <!--========== Paragraph ========== -->
+        <p class="hero-desc">
+          Get a car wherever and whenever you need it with your IOS and Android
+          device.
+        </p>
+
+        <!--========== Action ========== -->
+        <button class="explore-car-btn">Explore Cars</button>
+      </div>
+
+      <!--========== Car Figure ========== -->
+      <figure class="hero-figure">
+        <img src="/hero_car.png" alt="Hero Car" class="hero-car" />
+      </figure>
+    </div>
+
+    <!--========== Booking Form ========== -->
+    <form class="hero-form">
+      <div class="form-input-groups">
+        <!--========== Location ========== -->
+        <div class="form-group">
+          <label for="location">Location</label>
+
+          <div class="input-wrapper">
+            <lucide-angular [img]="LocationIcon" size="27" />
+            <input
+              type="text"
+              inputmode="latin"
+              name="location"
+              id="location"
+              placeholder="Search your location"
+            />
+          </div>
+        </div>
+
+        <!--========== Pick Up Date ========== -->
+        <div class="form-group">
+          <label for="pick-up">Pick Up Date</label>
+
+          <div class="input-wrapper">
+            <lucide-angular [img]="Calendar" size="27" />
+            <input
+              type="date"
+              inputmode="numeric"
+              name="pick-up"
+              id="pick-up"
+            />
+          </div>
+        </div>
+
+        <!--========== Return Date ========== -->
+        <div class="form-group">
+          <label for="return-date">Return Date</label>
+
+          <div class="input-wrapper">
+            <lucide-angular [img]="Calendar" size="27" />
+            <input
+              type="date"
+              inputmode="numeric"
+              name="return-date"
+              id="return-date"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!--========== Submit / Search ========== -->
+      <button type="submit" class="submit-btn">Search</button>
+    </form>
+  </div>
+
+  <!--========== Hero Logo ========== -->
+  <!-- <img src="/easily-section-logo.png" alt="Hero Logo" class="hero-logo" /> -->
+</section>

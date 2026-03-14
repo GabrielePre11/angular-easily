@@ -4,6 +4,7 @@
   /* Colors */
   --color-primary: #1572d3;
   --color-dark-blue: #051c34;
+  --color-black: #000000;
 
   --color-bg: #f8f9fb;
   --color-surface: #ffffff;
@@ -30,6 +31,7 @@ body {
   background-color: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-primary);
+  overflow-x: hidden;
   --webkit-font-smoothing: antialiased;
 }
 
@@ -63,11 +65,26 @@ img {
   display: block;
   max-width: 100%;
   height: auto;
-  --webkit-user-drag: none;
+  -webkit-user-drag: none;
+  user-select: none;
 }
 
 .container {
   max-width: 1200px;
   margin-inline: auto;
   padding-inline: 1.6rem;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 5px;
 }

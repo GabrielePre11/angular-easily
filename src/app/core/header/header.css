@@ -2,10 +2,32 @@
   position: fixed;
   top: 0;
   left: 0;
-  padding-block: 1.6rem;
+  padding-block: 2.5rem;
   width: 100%;
   background-color: transparent;
   z-index: 30;
+  transition:
+    padding-block 0.3s ease,
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.header.active {
+  padding-block: 1.6rem;
+  background-color: var(--color-surface);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  animation: headerSlideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes headerScrollUp {
+  from {
+    opacity: 0;
+    transform: translateY(-20%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .header-container {
