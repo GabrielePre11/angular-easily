@@ -1,6 +1,7 @@
 import { CalendarSearch, Car, MapPinned } from 'lucide-angular';
+import { EasyStep } from '../types/easyStep';
 
-export const EASY_STEPS = [
+export const EASY_STEPS: EasyStep[] = [
   {
     title: 'Choose location',
     desc: 'Pick up your car from your location',
