@@ -1,5 +1,5 @@
 .why-choose-us {
-  padding-block-end: 2rem;
+  padding-block-end: 5rem;
 }
 
 .why-choose-us .container {
@@ -99,6 +99,10 @@
 }
 
 @media (width >= 1024px) {
+  .why-choose-us {
+    padding-block-end: 6rem;
+  }
+
   .why-choose-us .container {
     column-gap: 5rem;
   }
