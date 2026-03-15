@@ -8,34 +8,6 @@
   row-gap: 2rem;
 }
 
-.section-heading {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  row-gap: 1rem;
-}
-
-.section-subtitle {
-  display: inline-block;
-  width: max-content;
-  padding: 0.8rem 1.2rem;
-  background-color: var(--color-primary);
-  font-size: 1.5rem;
-  text-transform: uppercase;
-  font-weight: 500;
-  color: var(--color-surface);
-  border-radius: 50px;
-}
-
-.section-title {
-  font-size: 2.5rem;
-  text-align: center;
-  line-height: 1.2;
-  word-wrap: break-word;
-  font-weight: 600;
-  color: var(--color-text);
-}
-
 .easy-steps {
   display: grid;
   place-items: center;
@@ -94,17 +66,6 @@
 }
 
 @media (width >= 768px) {
-  .section-heading {
-    row-gap: 1.5rem;
-  }
-  .section-subtitle {
-    font-size: 1.6rem;
-  }
-
-  .section-title {
-    font-size: 3rem;
-  }
-
   .step-title {
     font-size: 2rem;
   }
@@ -117,14 +78,6 @@
 }
 
 @media (width >= 1024px) {
-  .section-heading {
-    row-gap: 1.5rem;
-  }
-
-  .section-title {
-    font-size: 3.5rem;
-  }
-
   .step-desc {
     font-size: 1.8rem;
   }
@@ -135,14 +88,6 @@
 }
 
 @media (width >= 1280px) {
-  .section-heading {
-    row-gap: 1.7rem;
-  }
-
-  .section-title {
-    font-size: 4rem;
-  }
-
   .easy-steps {
     padding-block-start: 6rem;
   }

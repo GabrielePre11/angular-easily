@@ -1,0 +1,40 @@
+<section class="why-choose-us" aria-label="Why Choose Us Section">
+  <div class="container">
+    <div class="right-column">
+      <app-section-heading
+        [sectionTitle]="'We offer the best experience with our rental deals'"
+        [sectionSubtitle]="'Why Choose Us'"
+        [personalizedClass]="isMobile() ? 'items-center' : ''"
+      />
+
+      <ul class="rental-deals">
+        @for (deal of rentalDeals; track deal.title) {
+        <li class="rental-deal">
+          <lucide-angular [img]="deal.icon" size="35" class="deal-icon" />
+
+          <div class="deal-data">
+            <h3 class="deal-title">{{ deal.title }}</h3>
+            <p class="deal-desc">{{ deal.desc }}</p>
+          </div>
+        </li>
+        }
+      </ul>
+    </div>
+
+    <div class="left-column">
+      <figure>
+        <img
+          src="/choose-us-car.png"
+          alt="Choose Us Car"
+          class="choose-us-car"
+        />
+      </figure>
+
+      <img
+        src="/choose-us-vector.png"
+        alt="Choose Us Vector"
+        class="choose-us-vector"
+      />
+    </div>
+  </div>
+</section>

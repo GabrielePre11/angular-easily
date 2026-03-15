@@ -1,8 +1,15 @@
 <section class="car-slider" aria-label="Cars Slider Section">
   <ul class="cars-logos">
-    @for (logo of carsLogos; track logo.name) {
+    @for (logo of carsLogos; track $index) {
     <li class="logo">
-      <img [src]="logo.url" [alt]="`${logo.name}'s logo`" class="car-logo" />
+      <img
+        [src]="logo.url"
+        [alt]="`${logo.name}'s logo`"
+        width="150"
+        height="150"
+        loading="lazy"
+        class="car-logo"
+      />
     </li>
     }
   </ul>

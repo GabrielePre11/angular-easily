@@ -26,4 +26,20 @@ export const CAR_LOGOS: {
     name: 'Volkswagen',
     url: '/cars-logos/volkswagen.png',
   },
+  {
+    name: 'Mercedes',
+    url: '/cars-logos/mercedes.png',
+  },
+  {
+    name: 'Ford',
+    url: '/cars-logos/ford.png',
+  },
+  {
+    name: 'Renault',
+    url: '/cars-logos/renault.png',
+  },
+  {
+    name: 'Skoda',
+    url: '/cars-logos/skoda.png',
+  },
 ];

@@ -88,3 +88,11 @@ img {
   background: var(--color-primary);
   border-radius: 5px;
 }
+
+/* Personalized Classes */
+
+.items-center {
+  display: grid;
+  align-items: center;
+  text-align: center;
+}

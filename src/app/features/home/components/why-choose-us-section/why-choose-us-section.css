@@ -1,0 +1,123 @@
+.why-choose-us {
+  padding-block-end: 2rem;
+}
+
+.why-choose-us .container {
+  display: grid;
+  align-items: center;
+  row-gap: 2rem;
+}
+
+.left-column {
+  display: none;
+}
+
+.rental-deals {
+  display: grid;
+  align-items: center;
+  row-gap: 2.5rem;
+  padding-block-start: 3rem;
+}
+
+.rental-deal {
+  display: flex;
+  align-items: center;
+  column-gap: 2rem;
+}
+
+.deal-icon {
+  display: grid;
+  place-content: center;
+  padding: 0.9rem;
+  border-radius: 15px;
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+.deal-data {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.3rem;
+}
+
+.deal-title {
+  font-size: 1.9rem;
+  font-weight: 500;
+  word-wrap: break-word;
+}
+
+.deal-desc {
+  font-size: 1.5rem;
+  word-break: break-word;
+  line-height: 1.4;
+  color: var(--color-text-secondary);
+}
+
+@media (width >= 640px) {
+  .rental-deal {
+    column-gap: 2.5rem;
+  }
+
+  .deal-title {
+    font-size: 2.2rem;
+  }
+
+  .deal-desc {
+    font-size: 1.8rem;
+  }
+}
+
+@media (width >= 768px) {
+  .why-choose-us .container {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 3.5rem;
+  }
+
+  .left-column {
+    display: block;
+    position: relative;
+    order: -1;
+  }
+
+  .choose-us-car {
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%);
+    mask-image: linear-gradient(to right, transparent 0%, black 10%);
+  }
+
+  .choose-us-vector {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    max-width: 500px;
+    z-index: -1;
+
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%);
+    mask-image: linear-gradient(to right, transparent 0%, black 5%);
+  }
+}
+
+@media (width >= 1024px) {
+  .why-choose-us .container {
+    column-gap: 5rem;
+  }
+
+  .rental-deals {
+    row-gap: 3rem;
+  }
+
+  .choose-us-vector {
+    max-width: 600px;
+  }
+}
+
+@media (width >= 1280px) {
+  .why-choose-us .container {
+    column-gap: 8rem;
+  }
+
+  .choose-us-vector {
+    max-width: 650px;
+  }
+}
