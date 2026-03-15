@@ -114,6 +114,13 @@
 
   :is(.testimonials-left-quote, .testimonials-right-quote) {
     position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 0.2s ease-in-out,
+      visibility 0.2s ease-in-out;
+    will-change: opacity, visibility;
+    animation: quotes 1s ease-in-out forwards;
   }
 
   .testimonials-left-quote {
@@ -195,5 +202,12 @@
   .testimonial-name {
     margin-block-start: 2rem;
     font-size: 3.5rem;
+  }
+}
+
+@keyframes quotes {
+  to {
+    opacity: 1;
+    visibility: visible;
   }
 }
