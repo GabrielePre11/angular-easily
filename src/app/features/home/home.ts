@@ -5,6 +5,7 @@ import { CarSliderSection } from './components/car-slider-section/car-slider-sec
 import { WhyChooseUsSection } from './components/why-choose-us-section/why-choose-us-section';
 import { TestimonialsSection } from './components/testimonials-section/testimonials-section';
 import { DownloadSection } from './components/download-section/download-section';
+import { CarsSection } from './components/cars-section/cars-section';
 
 @Component({
   selector: 'app-home',
@@ -15,6 +16,7 @@ import { DownloadSection } from './components/download-section/download-section'
     WhyChooseUsSection,
     TestimonialsSection,
     DownloadSection,
+    CarsSection,
   ],
   templateUrl: './home.html',
   styleUrl: './home.css',
