@@ -4,6 +4,7 @@ import { HowItWorks } from './components/how-it-works/how-it-works';
 import { CarSliderSection } from './components/car-slider-section/car-slider-section';
 import { WhyChooseUsSection } from './components/why-choose-us-section/why-choose-us-section';
 import { TestimonialsSection } from './components/testimonials-section/testimonials-section';
+import { DownloadSection } from './components/download-section/download-section';
 
 @Component({
   selector: 'app-home',
@@ -13,6 +14,7 @@ import { TestimonialsSection } from './components/testimonials-section/testimoni
     CarSliderSection,
     WhyChooseUsSection,
     TestimonialsSection,
+    DownloadSection,
   ],
   templateUrl: './home.html',
   styleUrl: './home.css',
