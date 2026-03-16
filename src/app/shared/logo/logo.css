@@ -1,7 +1,8 @@
 .logo {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   column-gap: 0.8rem;
+  max-width: max-content;
   cursor: pointer;
 }
 

@@ -1,0 +1,72 @@
+<footer class="footer">
+  <!--========== Footer Top ========== -->
+  <div class="container">
+    <!--========== Left Column ========== -->
+    <div class="footer-top">
+      <div class="main-links">
+        <app-logo />
+
+        <!--========== Main Links ========== -->
+        <ul class="main_links-list">
+          @for (link of mainLinks; track link.id) {
+          <li class="main_links-list-item">
+            <lucide-angular
+              [img]="link.icon"
+              size="25"
+              class="main_links-icon"
+            />
+            <a href="/" target="_blank" class="main_links-name"
+              >{{ link.link }}</a
+            >
+          </li>
+          }
+        </ul>
+      </div>
+
+      <!--========== Right Column / Footer Links ========== -->
+      <ul class="footer-links">
+        @for (link of footerLinks; track link.title) {
+        <li class="footer-link">
+          <h3 class="footer_link-title">{{ link.title }}</h3>
+
+          <!--========== Footer Link List ========== -->
+          <ul
+            class="footer_link-list"
+            [class.social-icons]="link.title === 'Follow Us'"
+          >
+            @for (item of link.links; track item.name) {
+            <li class="footer_link-list-item">
+              @if (!item.icon) {
+              <a href="/" target="_blank">{{ item.name }}</a>
+              } @else {
+              <button>
+                <lucide-angular
+                  [img]="item.icon"
+                  size="25"
+                  class="footer_link-social-icon"
+                />
+              </button>
+              }
+            </li>
+            }
+          </ul>
+        </li>
+        }
+      </ul>
+    </div>
+
+    <!--========== Footer Bottom ========== -->
+    <div class="footer-bottom">
+      <p class="copyright-text">
+        &copy; {{ currentYear }} Easily. All rights reserved.
+      </p>
+
+      <p class="developer-text">
+        Developed by
+        <a href="https://github.com/GabrielePre11" target="_blank"
+          >Prestano Gabriele</a
+        >
+      </p>
+    </div>
+  </div>
+</footer>
