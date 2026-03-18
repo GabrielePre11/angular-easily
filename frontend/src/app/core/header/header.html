@@ -25,4 +25,13 @@
     [isOpen]="isMobileMenuOpen()"
     (close)="isMobileMenuOpen.set(false)"
   />
+
+  <!--========== Overlay ========== -->
+  <div
+    class="overlay"
+    aria-label="Overlay"
+    [attr.aria-hidden]="!isMobileMenuOpen()"
+    [class.active]="isMobileMenuOpen()"
+    (click)="isMobileMenuOpen.set(false)"
+  ></div>
 </header>

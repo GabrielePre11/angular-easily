@@ -39,6 +39,10 @@ export class Header {
        * @ or when the component is removed from the DOM. It automatically cleanes up the event listener.
        */
 
+      this.isMobileMenuOpen()
+        ? document.body.classList.add('scrolled')
+        : document.body.classList.remove('scrolled');
+
       onCleanup(() => {
         window.removeEventListener('scroll', headerScroll);
       });

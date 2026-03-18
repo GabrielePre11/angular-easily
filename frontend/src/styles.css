@@ -37,6 +37,10 @@ body {
   --webkit-font-smoothing: antialiased;
 }
 
+body.scrolled {
+  overflow: hidden;
+}
+
 html {
   /* Sets the raw font size to 10px, 1 rem = 10px instead of 16px. */
   font-size: 10px;
