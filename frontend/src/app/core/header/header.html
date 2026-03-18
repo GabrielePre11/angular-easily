@@ -32,6 +32,6 @@
     aria-label="Overlay"
     [attr.aria-hidden]="!isMobileMenuOpen()"
     [class.active]="isMobileMenuOpen()"
-    (click)="isMobileMenuOpen.set(false)"
+    (click)="toggleMobileMenu()"
   ></div>
 </header>
