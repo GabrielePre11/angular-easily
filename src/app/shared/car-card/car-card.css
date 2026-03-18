@@ -1,0 +1,158 @@
+.car {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  row-gap: 1rem;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 15px;
+}
+
+.car-figure {
+  display: grid;
+  place-content: center;
+  width: 100%;
+  height: 150px;
+  overflow: hidden;
+}
+
+.car-img {
+  object-fit: contain;
+}
+
+.car-data {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+}
+
+.car-main-infos {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
+.car-name {
+  width: 100%;
+  font-size: 2.3rem;
+  font-weight: 500;
+}
+
+.car-reviews {
+  display: flex;
+  align-items: center;
+  column-gap: 0.8rem;
+
+  svg {
+    fill: var(--color-star-gold);
+    stroke: var(--color-star-gold);
+  }
+}
+
+.reviews-main-infos {
+  display: flex;
+  align-items: center;
+  column-gap: 0.5rem;
+  font-size: 1.6rem;
+}
+
+.stars-number {
+  font-weight: 500;
+}
+
+.reviews {
+  color: var(--color-text-secondary);
+}
+
+.car-specs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  column-gap: 1.5rem;
+  row-gap: 1rem;
+}
+
+.car-spec {
+  display: flex;
+  align-items: center;
+  column-gap: 0.8rem;
+  font-size: 1.4rem;
+  color: var(--color-text-secondary);
+}
+
+.label {
+  font-weight: 500;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.car-price {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block-start: 2rem;
+  border-block-start: 2px solid var(--color-border);
+}
+
+.price-label {
+  font-size: 2.2rem;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+.price-data {
+  display: flex;
+  align-items: center;
+  column-gap: 0.5rem;
+}
+
+.price-data .price {
+  font-size: 2.2rem;
+  font-weight: 600;
+}
+
+.price-data .period {
+  font-size: 2.2rem;
+  color: var(--color-text-secondary);
+}
+
+.rent-btn {
+  display: block;
+  position: relative;
+  width: 100%;
+  padding: 1.6rem 2.5rem;
+  text-align: center;
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+  font-size: 1.8rem;
+  font-weight: 500;
+  border-radius: 10px;
+  z-index: 0;
+  overflow: hidden;
+  transition: all 0.4s ease-in-out;
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    bottom: -75px;
+    right: -75px;
+    background: var(--color-dark-blue);
+    border-radius: 50%;
+    transform: scale(0);
+    transform-origin: center;
+    transition:
+      transform 0.4s ease-out,
+      opacity 0.2s ease-out;
+    z-index: -1;
+    opacity: 0;
+  }
+
+  &:is(:hover, :focus-visible)::after {
+    transform: scale(6);
+    opacity: 1;
+  }
+}

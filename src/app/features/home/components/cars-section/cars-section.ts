@@ -3,10 +3,11 @@ import { SectionHeading } from '../../../../shared/section-heading/section-headi
 import { CommonModule } from '@angular/common';
 import { CARS_MOCKUP } from '../../../../models/constants/carsMockup';
 import { LucideAngularModule } from 'lucide-angular';
+import { CarCard } from '../../../../shared/car-card/car-card';
 
 @Component({
   selector: 'app-cars-section',
-  imports: [CommonModule, SectionHeading, LucideAngularModule],
+  imports: [CommonModule, SectionHeading, LucideAngularModule, CarCard],
   templateUrl: './cars-section.html',
   styleUrl: './cars-section.css',
 })
