@@ -1,5 +1,5 @@
 import { prisma } from "@/lib/prisma";
-import { SignUpBody } from "@/types/auth.type";
+import { SignInBody, SignUpBody } from "@/types/auth.type";
 import bcrypt from "bcryptjs";
 
 export const signUpFunction = async (data: SignUpBody) => {
@@ -37,4 +37,29 @@ export const signUpFunction = async (data: SignUpBody) => {
       role: true,
     },
   });
+};
+
+export const signInFunction = async (data: SignInBody) => {
+  const { email, password } = data;
+
+  const user = await prisma.user.findUnique({
+    where: { email },
+  });
+
+  if (!user) {
+    throw new Error("Invalid credentials.");
+  }
+
+  const isPasswordValid = await bcrypt.compare(password, user.password);
+
+  if (!isPasswordValid) {
+    throw new Error("Invalid credentials.");
+  }
+
+  return {
+    id: user.id,
+    name: user.name,
+    email: user.email,
+    role: user.role,
+  };
 };

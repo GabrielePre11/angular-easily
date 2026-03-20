@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 export type Role = "USER" | "ADMIN";
 
 export type Token = {
-  id: number;
+  id: string;
   role: Role;
 };
 

@@ -1,7 +1,8 @@
-import { signUpFunction } from "@/services/auth.service";
-import { SignUpBody } from "@/types/auth.type";
+import { signInFunction, signUpFunction } from "@/services/auth.service";
+import { SignInBody, SignUpBody } from "@/types/auth.type";
 import { checkEmail } from "@/utils/auth/checkEmail";
 import { checkPassword } from "@/utils/auth/checkPassword";
+import { generateToken } from "@/utils/auth/generateToken";
 import { Request, Response } from "express";
 
 export const signUp = async (
@@ -30,6 +31,32 @@ export const signUp = async (
       return res
         .status(500)
         .json({ message: "There was an error signing up a new user." });
+    }
+  }
+};
+
+export const signIn = async (
+  req: Request<{}, {}, SignInBody>,
+  res: Response,
+) => {
+  try {
+    const { email, password } = req.body;
+
+    if (!email || !password) {
+      return res.status(400).json({ message: "Missing required fields." });
+    }
+
+    const user = await signInFunction({ email, password });
+    generateToken(res, { id: user.id, role: user.role });
+
+    return user;
+  } catch (error) {
+    if (error instanceof Error) {
+      return res.status(400).json({ message: error.message });
+    } else {
+      return res
+        .status(500)
+        .json({ message: "There was an error while signing in." });
     }
   }
 };
