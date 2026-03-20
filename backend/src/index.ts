@@ -4,6 +4,8 @@ import helmet from "helmet";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 
+import authRoutes from "@/routes/auth.routes";
+
 //============ Configuration ============//
 dotenv.config();
 const app = express();
@@ -26,6 +28,9 @@ app.use(
   }),
 );
 app.use(cookieParser());
+
+//============ Routes ============//
+app.use(`${API_URL}/auth`, authRoutes);
 
 //============ Server Start ============//
 app.listen(PORT, () => console.info(`Server running on port ${PORT}`));
