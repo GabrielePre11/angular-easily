@@ -60,3 +60,8 @@ export const signIn = async (
     }
   }
 };
+
+export const signOut = async (req: Request, res: Response) => {
+  res.clearCookie("token");
+  return res.status(200).json({ message: "Logged out successfully." });
+};
