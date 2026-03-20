@@ -49,7 +49,7 @@ export const signIn = async (
     const user = await signInFunction({ email, password });
     generateToken(res, { id: user.id, role: user.role });
 
-    return user;
+    return res.status(200).json(user);
   } catch (error) {
     if (error instanceof Error) {
       return res.status(400).json({ message: error.message });
