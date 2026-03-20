@@ -5,6 +5,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 
 import authRoutes from "@/routes/auth.routes";
+import userRoutes from "@/routes/user.routes";
 
 //============ Configuration ============//
 dotenv.config();
@@ -31,6 +32,7 @@ app.use(cookieParser());
 
 //============ Routes ============//
 app.use(`${API_URL}/auth`, authRoutes);
+app.use(`${API_URL}/auth`, userRoutes);
 
 //============ Server Start ============//
 app.listen(PORT, () => console.info(`Server running on port ${PORT}`));

@@ -1,10 +1,12 @@
+import { Role } from "./auth/generateToken";
+
 declare global {
   namespace Express {
     interface Request {
       cookies: Record<string, string>;
       user?: {
-        id: number;
-        role: "USER" | "ADMIN";
+        id: string;
+        role: Role;
       };
     }
   }
