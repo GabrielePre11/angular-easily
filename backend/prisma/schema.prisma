@@ -79,6 +79,8 @@ model Car {
 
   // @OneToMany -> A Car has many Reviews
   reviews Review[]
+
+  @@unique([brandId, model, year])
 }
 
 model Review {
