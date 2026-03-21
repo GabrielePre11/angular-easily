@@ -6,6 +6,7 @@ import cookieParser from "cookie-parser";
 
 import authRoutes from "@/routes/auth.routes";
 import userRoutes from "@/routes/user.routes";
+import brandRoutes from "@/routes/brand.routes";
 
 //============ Configuration ============//
 dotenv.config();
@@ -33,6 +34,7 @@ app.use(cookieParser());
 //============ Routes ============//
 app.use(`${API_URL}/auth`, authRoutes);
 app.use(`${API_URL}/users`, userRoutes);
+app.use(`${API_URL}/brands`, brandRoutes);
 
 //============ Server Start ============//
 app.listen(PORT, () => console.info(`Server running on port ${PORT}`));
