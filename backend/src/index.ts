@@ -8,6 +8,7 @@ import authRoutes from "@/routes/auth.routes";
 import userRoutes from "@/routes/user.routes";
 import brandRoutes from "@/routes/brand.routes";
 import carRoutes from "@/routes/car.routes";
+import reviewRoutes from "@/routes/review.route";
 
 //============ Configuration ============//
 dotenv.config();
@@ -37,6 +38,7 @@ app.use(`${API_URL}/auth`, authRoutes);
 app.use(`${API_URL}/users`, userRoutes);
 app.use(`${API_URL}/brands`, brandRoutes);
 app.use(`${API_URL}/cars`, carRoutes);
+app.use(`${API_URL}/reviews`, reviewRoutes);
 
 //============ Server Start ============//
 app.listen(PORT, () => console.info(`Server running on port ${PORT}`));
