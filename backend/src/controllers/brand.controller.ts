@@ -9,7 +9,7 @@ import { Request, Response } from "express";
 
 export const getBrands = async (req: Request, res: Response) => {
   try {
-    const brands = await prisma.brand.findMany();
+    const brands = await prisma.brand.findMany({ include: { cars: true } });
     return res.status(200).json(brands);
   } catch (error) {
     if (error instanceof Error) {
@@ -29,7 +29,10 @@ export const getBrandById = async (
   try {
     const { id } = req.params;
 
-    const brand = await prisma.brand.findUnique({ where: { id } });
+    const brand = await prisma.brand.findUnique({
+      where: { id },
+      include: { cars: true },
+    });
 
     if (!brand) {
       return res
