@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/prisma";
+import slugify from "slugify";
 import { createCarBody } from "@/types/car.type";
 
 export const createCarFunction = async (data: createCarBody) => {
@@ -32,11 +33,13 @@ export const createCarFunction = async (data: createCarBody) => {
     );
   }
 
+  const carSlug = slugify(model, { lower: true, strict: true });
+
   return await prisma.car.create({
     data: {
       brandId,
       model,
-      slug: `${model}-${year}`,
+      slug: carSlug,
       year,
       pricePerDay,
       doors,
@@ -78,6 +81,12 @@ export const updateCarFunction = async (
     throw new Error(`Car with ID: ${carId} not found.`);
   }
 
+  let newSlug = "";
+
+  if (model) {
+    newSlug = slugify(model, { lower: true, strict: true });
+  }
+
   return await prisma.car.update({
     where: {
       id: carId,
@@ -85,7 +94,7 @@ export const updateCarFunction = async (
     data: {
       brandId,
       model,
-      slug: `${model}-${year}`,
+      slug: newSlug,
       year,
       pricePerDay,
       doors,
@@ -100,7 +109,7 @@ export const updateCarFunction = async (
 };
 
 export const deleteCarFunction = async (carId: string) => {
-  const car = await prisma.brand.findUnique({
+  const car = await prisma.car.findUnique({
     where: { id: carId },
   });
 

@@ -34,6 +34,10 @@ export const updateBrandFunction = async (
     throw new Error(`Brand with ID: ${brandId} not found.`);
   }
 
+  if (image && !image.startsWith("http")) {
+    throw new Error("Invalid image URL.");
+  }
+
   return await prisma.brand.update({
     where: { id: brandId },
     data: {
