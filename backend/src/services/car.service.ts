@@ -33,7 +33,10 @@ export const createCarFunction = async (data: createCarBody) => {
     );
   }
 
-  const carSlug = slugify(model, { lower: true, strict: true });
+  const carSlug = slugify(`${model}-${year}`, {
+    lower: true,
+    strict: true,
+  });
 
   return await prisma.car.create({
     data: {
@@ -84,7 +87,10 @@ export const updateCarFunction = async (
   let newSlug = "";
 
   if (model) {
-    newSlug = slugify(model, { lower: true, strict: true });
+    newSlug = slugify(`${model}-${year}`, {
+      lower: true,
+      strict: true,
+    });
   }
 
   return await prisma.car.update({

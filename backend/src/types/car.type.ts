@@ -13,3 +13,22 @@ export interface createCarBody {
   type: CarType;
   status: CarStatus;
 }
+
+type Sort = "newest" | "oldest" | "priceAsc" | "priceDesc";
+
+export interface carQuery {
+  brand: string;
+  model: string;
+  year: number;
+  sort: Sort;
+  pricePerDay: number;
+  doors: number;
+  seats: number;
+  transmission: Transmission;
+  type: CarType;
+  status: CarStatus;
+  features: string[];
+  page: number;
+  limit: number;
+  search: string;
+}

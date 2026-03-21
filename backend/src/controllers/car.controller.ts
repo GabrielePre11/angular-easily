@@ -1,19 +1,109 @@
+import { Prisma } from "@/generated/prisma/client";
 import { prisma } from "@/lib/prisma";
 import {
   createCarFunction,
   deleteCarFunction,
   updateCarFunction,
 } from "@/services/car.service";
-import { createCarBody } from "@/types/car.type";
+import { carQuery, createCarBody } from "@/types/car.type";
 import { Request, Response } from "express";
 
-// TODO: Filters
-export const getCars = async (req: Request, res: Response) => {
+export const getCars = async (
+  req: Request<{}, {}, {}, Partial<carQuery>>,
+  res: Response,
+) => {
   try {
+    const {
+      brand,
+      model,
+      year,
+      sort,
+      pricePerDay,
+      doors,
+      seats,
+      transmission,
+      type,
+      status,
+      features,
+      page,
+      limit,
+      search,
+    } = req.query;
+
+    const where: Prisma.CarWhereInput = {};
+    const orderBy: Prisma.CarOrderByWithRelationInput = {};
+
+    // Brand's Name
+    if (Array.isArray(brand)) {
+      where.brand = {
+        is: {
+          name: {
+            in: brand,
+          },
+        },
+      };
+    } else {
+      where.brand = {
+        is: {
+          name: brand,
+        },
+      };
+    }
+
+    // Sort
+    if (sort === "newest") orderBy.createdAt = "desc";
+    if (sort === "oldest") orderBy.createdAt = "asc";
+    if (sort === "priceAsc") orderBy.pricePerDay = "asc";
+    if (sort === "priceDesc") orderBy.pricePerDay = "desc";
+
+    // Year, PricePerDay, Doors, Seats
+    if (year) where.year = Number(year);
+    if (pricePerDay) where.pricePerDay = Number(pricePerDay);
+    if (doors) where.doors = Number(doors);
+    if (seats) where.seats = Number(seats);
+
+    // Features & Model
+    if (features) where.features = { hasEvery: features };
+    if (model) where.model = { contains: model, mode: "insensitive" };
+
+    // Enums
+    if (status) where.status = status;
+    if (transmission) where.transmission = transmission;
+    if (type) where.carType = type;
+
+    // Search
+    if (search)
+      where.OR = [
+        {
+          model: { contains: search, mode: "insensitive" },
+          brand: { name: { contains: search, mode: "insensitive" } },
+        },
+      ];
+
+    // Pagination
+    const pageNumber = Number(page) || 1;
+    const carsLimit = Number(limit) || 8;
+    const skip = (pageNumber - 1) * carsLimit;
+
     const cars = await prisma.car.findMany({
+      where,
+      orderBy,
       include: { brand: true, bookings: true, reviews: true },
+      take: carsLimit,
+      skip,
     });
-    return res.status(200).json(cars);
+
+    const totalCars = await prisma.car.count({ where });
+    const totalPages = Math.ceil(totalCars / carsLimit);
+
+    return res.status(200).json({
+      carsCount: cars.length,
+      totalCars,
+      pages: totalPages,
+      page: pageNumber,
+      limit: carsLimit,
+      cars,
+    });
   } catch (error) {
     if (error instanceof Error) {
       return res.status(400).json({ message: error.message });
