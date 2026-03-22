@@ -1,4 +1,5 @@
 .car {
+  position: relative;
   display: flex;
   flex-direction: column;
   padding: 2rem;
@@ -13,32 +14,11 @@
 }
 
 .car-figure {
-  position: relative;
   display: grid;
   place-content: center;
   width: 100%;
   height: 150px;
   overflow: hidden;
-
-  :is(.car-available, .car-unavailable) {
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 0.5rem 1rem;
-    color: var(--color-surface);
-    font-size: 1.3rem;
-    font-weight: 500;
-    border-radius: 15px;
-    z-index: 1;
-  }
-
-  .car-available {
-    background-color: var(--color-success);
-  }
-
-  .car-unavailable {
-    background-color: var(--color-danger);
-  }
 }
 
 .car-img {
@@ -197,4 +177,24 @@
     transform: scale(6);
     opacity: 1;
   }
+}
+
+:is(.car-available, .car-unavailable) {
+  position: absolute;
+  top: 3%;
+  left: 4%;
+  padding: 0.5rem 1rem;
+  color: var(--color-surface);
+  font-size: 1.3rem;
+  font-weight: 500;
+  border-radius: 15px;
+  z-index: 1;
+}
+
+.car-available {
+  background-color: var(--color-success);
+}
+
+.car-unavailable {
+  background-color: var(--color-danger);
 }

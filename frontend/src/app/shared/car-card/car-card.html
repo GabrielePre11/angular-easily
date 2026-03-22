@@ -6,12 +6,6 @@
       class="car-img"
       loading="lazy"
     />
-
-    @if (car().status === "AVAILABLE") {
-    <span class="car-available">{{ car().status }}</span>
-    } @else {
-    <span class="car-unavailable">{{ car().status }}</span>
-    }
   </figure>
 
   <div class="car-data">
@@ -78,4 +72,11 @@
 
     <button class="rent-btn">Rent Now</button>
   </div>
+
+  <!--========== Car Status ========== -->
+  @if (car().status === "AVAILABLE") {
+  <span class="car-available">{{ car().status }}</span>
+  } @else {
+  <span class="car-unavailable">{{ car().status }}</span>
+  }
 </article>
