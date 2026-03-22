@@ -7,8 +7,8 @@
     />
 
     <ul class="cars">
-      @for (car of cars; track car.id) {
-      <app-car-card [car]="car" />
+      @for (car of heroCars(); track car.id) {
+      <li><app-car-card [car]="car" /></li>
       }
     </ul>
 

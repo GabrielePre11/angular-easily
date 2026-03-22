@@ -1,7 +1,7 @@
 import { Component, input } from '@angular/core';
-import { CarMockup } from '../../models/types/carMockup';
 import { CommonModule, CurrencyPipe } from '@angular/common';
 import { LucideAngularModule } from 'lucide-angular';
+import { Car } from '../../models/types/car.type';
 
 @Component({
   selector: 'app-car-card',
@@ -10,5 +10,5 @@ import { LucideAngularModule } from 'lucide-angular';
   styleUrl: './car-card.css',
 })
 export class CarCard {
-  car = input.required<CarMockup>();
+  car = input.required<Car>();
 }

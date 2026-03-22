@@ -147,7 +147,18 @@ export const getCarById = async (
       return res.status(404).json({ message: `Car with ID: ${id} not found.` });
     }
 
-    return res.status(200).json(car);
+    const reviews = await prisma.review.findMany({
+      where: { carId: car.id },
+    });
+
+    const totalReviews = await prisma.review.count({
+      where: { carId: car.id },
+    });
+
+    const reviewsSum = reviews.reduce((acc, review) => acc + review.stars, 0);
+    const averageRating = totalReviews > 0 ? reviewsSum / totalReviews : 0;
+
+    return res.status(200).json({ car, totalReviews, averageRating });
   } catch (error) {
     if (error instanceof Error) {
       return res.status(400).json({ message: error.message });
