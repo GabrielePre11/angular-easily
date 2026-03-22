@@ -19,16 +19,6 @@ export class CarsSection implements OnInit {
   error = signal<string>('');
 
   ngOnInit(): void {
-    this.isLoading.set(true);
-
-    this.carsService.getCars().subscribe({
-      next: () => {
-        this.isLoading.set(false);
-      },
-      error: (error) => {
-        this.error.set(error.message);
-        this.isLoading.set(false);
-      },
-    });
+    this.carsService.getCars().subscribe();
   }
 }

@@ -6,15 +6,22 @@
       class="car-img"
       loading="lazy"
     />
+
+    @if (car().status === "AVAILABLE") {
+    <span class="car-available">{{ car().status }}</span>
+    } @else {
+    <span class="car-unavailable">{{ car().status }}</span>
+    }
   </figure>
 
   <div class="car-data">
-    <!-- car name / reviews -->
+    <!--========== Brand & Model and Reviews ========== -->
     <div class="car-main-infos">
       <h3 class="car-name">
         {{ car().brand.name | titlecase}} {{ car().model }}
       </h3>
 
+      <!--========== Reviews ========== -->
       <div class="car-reviews">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -33,6 +40,7 @@
           />
         </svg>
 
+        <!-- TODO: adjust reviews -->
         <div class="reviews-main-infos">
           <span class="stars-number">{{ car().reviews.length / 5 }}</span>
           <span class="reviews">({{ car().reviews.length }} reviews)</span>
@@ -40,7 +48,7 @@
       </div>
     </div>
 
-    <!-- car specs -->
+    <!--========== Features ========== -->
     <ul class="car-specs">
       @for (spec of car().features; track spec) {
       <li class="car-spec">
@@ -54,6 +62,7 @@
     </ul>
   </div>
 
+  <!--========== Car Footer ========== -->
   <div class="car-footer">
     <div class="car-price">
       <h4 class="price-label">Price</h4>
