@@ -4,11 +4,15 @@ import helmet from "helmet";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 
+import { cleanBooking } from "./utils/bookingCleaner";
+import { prisma } from "./lib/prisma";
+
 import authRoutes from "@/routes/auth.routes";
 import userRoutes from "@/routes/user.routes";
 import brandRoutes from "@/routes/brand.routes";
 import carRoutes from "@/routes/car.routes";
 import reviewRoutes from "@/routes/review.route";
+import bookingRoutes from "@/routes/booking.route";
 
 //============ Configuration ============//
 dotenv.config();
@@ -39,6 +43,15 @@ app.use(`${API_URL}/users`, userRoutes);
 app.use(`${API_URL}/brands`, brandRoutes);
 app.use(`${API_URL}/cars`, carRoutes);
 app.use(`${API_URL}/reviews`, reviewRoutes);
+app.use(`${API_URL}/bookings`, bookingRoutes);
 
 //============ Server Start ============//
-app.listen(PORT, () => console.info(`Server running on port ${PORT}`));
+app.listen(PORT, () => {
+  console.info(`Server running on port ${PORT}`);
+  cleanBooking();
+});
+
+process.on("SIGINT", () => {
+  prisma.$disconnect();
+  console.info("Server was stopped.");
+});

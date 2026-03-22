@@ -14,7 +14,7 @@ export const getReviewByCarId = async (
   try {
     const { carId } = req.params;
 
-    const review = await prisma.review.findMany({
+    const reviews = await prisma.review.findMany({
       where: {
         carId,
       },
@@ -25,8 +25,7 @@ export const getReviewByCarId = async (
     });
 
     return res.status(200).json({
-      review,
-      message: `Review on car ${carId} updated successfully.`,
+      reviews,
     });
   } catch (error) {
     if (error instanceof Error) {

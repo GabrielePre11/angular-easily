@@ -88,7 +88,15 @@ export const getCars = async (
     const cars = await prisma.car.findMany({
       where,
       orderBy,
-      include: { brand: true, bookings: true, reviews: true },
+      include: {
+        brand: true,
+        bookings: {
+          include: { user: { select: { id: true, name: true, email: true } } },
+        },
+        reviews: {
+          include: { user: { select: { id: true, name: true, email: true } } },
+        },
+      },
       take: carsLimit,
       skip,
     });
@@ -124,7 +132,15 @@ export const getCarById = async (
 
     const car = await prisma.car.findUnique({
       where: { id },
-      include: { brand: true, bookings: true, reviews: true },
+      include: {
+        brand: true,
+        bookings: {
+          include: { user: { select: { id: true, name: true, email: true } } },
+        },
+        reviews: {
+          include: { user: { select: { id: true, name: true, email: true } } },
+        },
+      },
     });
 
     if (!car) {
