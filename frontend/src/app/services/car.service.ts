@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { environment } from '../../environments/environment.development';
 import { HttpClient } from '@angular/common/http';
 import { Car } from '../models/types/car.type';
@@ -9,9 +9,8 @@ import { catchError, of, tap } from 'rxjs';
   providedIn: 'root',
 })
 export class CarService {
+  private httpClient = inject(HttpClient);
   private serverURL = `${environment.apiURL}/cars`;
-
-  constructor(private httpClient: HttpClient) {}
 
   private _isLoading = signal<boolean>(false);
   private _errorState = signal<string>('');
@@ -56,13 +55,13 @@ export class CarService {
       .get<GetAllCarsResponse>(`${this.serverURL}?page=${page}&limit=${limit}`)
       .pipe(
         tap((data) => {
+          this._isLoading.set(false);
           if (Array.isArray(data.cars)) {
-            this._isLoading.set(false);
             this.setCars(data.cars);
           }
-          this.setCarsCount(data.carsCount);
-          this.setTotalCars(data.totalCars);
-          this.setTotalPages(data.pages);
+          this.setCarsCount(Number(data.carsCount));
+          this.setTotalCars(Number(data.totalCars));
+          this.setTotalPages(Number(data.pages));
         }),
         // In RxJS, we are forced to return an Observable.
         // "of" returns an Observable with no value, in this case an empty array.

@@ -1,0 +1,97 @@
+/* Animation remains the same */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+  pointer-events: none;
+}
+
+/* Base Skeleton Style */
+.skeleton-text,
+.skeleton-img,
+.skeleton-icon,
+.skeleton-spec,
+.skeleton-btn,
+.skeleton-badge {
+  margin-block-start: 0.8rem;
+  background: linear-gradient(
+    90deg,
+    var(--color-border) 25%,
+    var(--color-surface) 50%,
+    var(--color-border) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+/* Fixes for spacing and "stretching" */
+.skeleton-title {
+  display: block;
+  height: 2.8rem; /* Slightly larger to match H3 line-height */
+  width: 85%;
+  border-radius: 4px;
+}
+
+.skeleton-img {
+  width: 200px;
+  height: 120px;
+  border-radius: 10px;
+}
+
+.skeleton-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.skeleton-review-stats {
+  height: 1.6rem;
+  width: 110px;
+  border-radius: 4px;
+}
+
+.skeleton-spec {
+  display: inline-block;
+  width: 70px;
+  height: 2.8rem; /* Matches your .car-spec padding/font */
+  border-radius: 15px;
+}
+
+.skeleton-price-label {
+  height: 2.2rem;
+  width: 65px;
+  border-radius: 4px;
+}
+
+.skeleton-price-value {
+  height: 2.2rem;
+  width: 90px;
+  border-radius: 4px;
+}
+
+.skeleton-btn {
+  display: block;
+  height: 5.5rem; /* Matches your .rent-btn total height */
+  width: 100%;
+  border-radius: 10px;
+}
+
+.skeleton-badge {
+  position: absolute;
+  top: 3%;
+  left: 4%;
+  width: 80px;
+  height: 2.2rem;
+  border-radius: 15px;
+}

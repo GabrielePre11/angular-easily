@@ -4,19 +4,25 @@ import { CommonModule } from '@angular/common';
 import { LucideAngularModule } from 'lucide-angular';
 import { CarCard } from '../../../../shared/car-card/car-card';
 import { CarService } from '../../../../services/car.service';
+import { CarSkeletonCard } from '../../../../shared/car-skeleton-card/car-skeleton-card';
 
 @Component({
   selector: 'app-cars-section',
-  imports: [CommonModule, SectionHeading, LucideAngularModule, CarCard],
+  imports: [
+    CommonModule,
+    SectionHeading,
+    LucideAngularModule,
+    CarCard,
+    CarSkeletonCard,
+  ],
   templateUrl: './cars-section.html',
   styleUrl: './cars-section.css',
 })
 export class CarsSection implements OnInit {
-  private carsService = inject(CarService);
+  protected carsService = inject(CarService);
   readonly heroCars = this.carsService.cars;
 
-  isLoading = signal<boolean>(true);
-  error = signal<string>('');
+  skeletonCards = Array.from({ length: 8 });
 
   ngOnInit(): void {
     this.carsService.getCars().subscribe();
