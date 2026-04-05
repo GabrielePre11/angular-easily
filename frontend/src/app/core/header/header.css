@@ -16,16 +16,14 @@
   padding-block: 1.6rem;
   background-color: var(--color-surface);
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  animation: headerSlideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: headerScrollUp 0.2s ease-in-out;
 }
 
 @keyframes headerScrollUp {
   from {
-    opacity: 0;
     transform: translateY(-20%);
   }
   to {
-    opacity: 1;
     transform: translateY(0);
   }
 }

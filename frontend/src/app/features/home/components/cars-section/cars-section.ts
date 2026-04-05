@@ -18,13 +18,10 @@ import { CarSkeletonCard } from '../../../../shared/car-skeleton-card/car-skelet
   templateUrl: './cars-section.html',
   styleUrl: './cars-section.css',
 })
-export class CarsSection implements OnInit {
+export class CarsSection {
   protected carsService = inject(CarService);
-  readonly heroCars = this.carsService.cars;
 
-  skeletonCards = Array.from({ length: 8 });
-
-  ngOnInit(): void {
-    this.carsService.getCars().subscribe();
-  }
+  isLoading = this.carsService.isLoading;
+  errorState = this.carsService.errorState;
+  heroCars = this.carsService.cars;
 }

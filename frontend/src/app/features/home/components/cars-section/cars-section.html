@@ -7,21 +7,17 @@
     />
 
     <ul class="cars">
-      <!--============== Loading State ==============-->
-      @if (!carsService.errorState() && carsService.isLoading()) { @for (card of
-      skeletonCards; track card) {
+      @for (car of heroCars(); track car.id) {
       <li>
-        <app-car-skeleton-card />
-      </li>
-      } }
-
-      <!--============== Home Cars ==============-->
-      @if (!carsService.errorState() && !carsService.isLoading() &&
-      heroCars().length > 0) { @for (car of heroCars(); track car.id) {
-      <li>
+        @defer (on viewport; prefetch on idle) {
         <app-car-card [car]="car" />
+        } @placeholder {
+        <app-car-skeleton-card />
+        } @loading (minimum 500ms) {
+        <app-car-skeleton-card />
+        }
       </li>
-      } }
+      }
     </ul>
 
     <button class="show-all-btn">Show All</button>
