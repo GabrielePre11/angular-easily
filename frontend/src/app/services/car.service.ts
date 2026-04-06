@@ -26,9 +26,22 @@ export class CarService {
     params: () => ({ page: this.page(), limit: this.limit() }),
     stream: (carsParams) => {
       const { page, limit } = carsParams.params;
-      return this.httpClient.get<GetAllCarsResponse>(
-        `${this.serverURL}?page=${page}&limit=${limit}`,
-      );
+      return this.httpClient
+        .get<GetAllCarsResponse>(
+          `${this.serverURL}?page=${page}&limit=${limit}`,
+        )
+        .pipe(
+          catchError((err: unknown) =>
+            of({
+              cars: [],
+              carsCount: 0,
+              limit: 0,
+              page: 0,
+              pages: 0,
+              totalCars: 0,
+            }),
+          ),
+        );
     },
   });
 

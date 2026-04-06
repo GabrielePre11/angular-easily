@@ -13,6 +13,6 @@ router.post("/sign-up", signUp);
 router.post("/sign-in", signIn);
 router.post("/sign-out", signOut);
 
-router.post("/check-auth", authMiddleware, checkAuth);
+router.get("/check-auth", authMiddleware, checkAuth);
 
 export default router;

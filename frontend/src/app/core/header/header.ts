@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, effect, signal } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Component, computed, effect, inject, signal } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
 import { Logo } from '../../shared/logo/logo';
 import { MobileMenu } from '../mobile-menu/mobile-menu';
-import { LucideAngularModule, Menu } from 'lucide-angular';
+import { LucideAngularModule, Menu, UserIcon } from 'lucide-angular';
 import { DesktopMenu } from '../desktop-menu/desktop-menu';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -20,7 +21,13 @@ import { DesktopMenu } from '../desktop-menu/desktop-menu';
   styleUrl: './header.css',
 })
 export class Header {
-  readonly MenuIcon = Menu;
+  private authService = inject(AuthService);
+  private router = inject(Router);
+
+  readonly user = this.authService.currentUser;
+
+  protected readonly UserIcon = UserIcon;
+  protected readonly MenuIcon = Menu;
 
   isMobileMenuOpen = signal<boolean>(false);
   windowScrollY = signal<number>(0);
@@ -51,5 +58,16 @@ export class Header {
 
   toggleMobileMenu() {
     this.isMobileMenuOpen.update((prev) => !prev);
+  }
+
+  signOut() {
+    this.authService.signOut().subscribe({
+      next: () => {
+        this.router.navigate(['/']);
+      },
+      error(err) {
+        console.error(err);
+      },
+    });
   }
 }

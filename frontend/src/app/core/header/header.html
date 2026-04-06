@@ -9,7 +9,15 @@
     <!--========== Actions ========== -->
     <div class="header-actions">
       <!--========== Sign In Button ========== -->
-      <button class="sign_in-btn">Sign In</button>
+      @if (!user()) {
+      <button class="sign_in-btn" routerLink="/auth/sign-in">Sign In</button>
+      } @else {
+      <!-- sign out temporaneo -->
+      <button class="user_menu-btn" aria-label="User Menu" (click)="signOut()">
+        <lucide-angular [img]="UserIcon" size="23" />
+        Your Account
+      </button>
+      }
 
       <!--========== Mobile Menu Toggle ========== -->
       <button aria-label="Open Mobile Menu" (click)="toggleMobileMenu()">

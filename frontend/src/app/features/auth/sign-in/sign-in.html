@@ -1,0 +1,57 @@
+<section class="sign-up-section" aria-label="Register Page">
+  <div class="container">
+    <form class="form" [formGroup]="signUpForm" (submit)="onSubmit($event)">
+      <!--============== Heading ==============-->
+      <h3 class="form-title">Welcome Back! Sign In</h3>
+
+      <!--============== Input Fields ==============-->
+      <div class="input-fields">
+        <input
+          type="email"
+          placeholder="Email"
+          inputmode="latin"
+          pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
+          title="Please insert a valid email."
+          required
+          autocomplete="email"
+          class="input-field"
+          formControlName="email"
+        />
+
+        <div class="input-password">
+          <input
+            [type]="isPasswordVisible() ? 'text' : 'password'"
+            placeholder="Password"
+            inputmode="latin"
+            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+            title="Please insert a valid password."
+            required
+            autocomplete="new-password"
+            class="input-field password-field"
+            formControlName="password"
+          />
+
+          <button
+            class="input-password-icon"
+            [ngClass]="isPasswordVisible() ? 'active' : ''"
+            [attr.aria-label]="isPasswordVisible() ? 'Hide password' : 'Show password'"
+            aria-live="polite"
+            (click)="togglePassword($event)"
+          >
+            <lucide-angular [img]="isPasswordVisible() ? Eye : EyeClosed" />
+          </button>
+        </div>
+      </div>
+
+      <!--============== Errors ==============-->
+
+      <!--============== Submit ==============-->
+      <button class="submit-btn">Sign In</button>
+
+      <!--============== Don't have an account? ==============-->
+      <small class="do-not-have-account">
+        <a routerLink="/auth/sign-up">Don't have an account? Sign Up</a>
+      </small>
+    </form>
+  </div>
+</section>
